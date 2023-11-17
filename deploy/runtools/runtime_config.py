@@ -433,7 +433,7 @@ class RuntimeHWConfig:
         permissive_driver_args += [f"+partition-fpga-cnt={self.get_partition_fpga_cnt()}"]
         permissive_driver_args += [f"+partition-fpga-idx={self.get_partition_fpga_idx()}"]
 
-        driver_call = f"""{"sudo" if sudo else ""} ./{driver} +permissive {" ".join(permissive_driver_args)} {extra_plusargs} +permissive-off {" ".join(command_bootbinaries)} {extra_args} """
+        driver_call = f"""./{driver} +permissive {" ".join(permissive_driver_args)} {extra_plusargs} +permissive-off {" ".join(command_bootbinaries)} {extra_args} """
         base_command = f"""script -f -c 'stty intr ^] && {driver_call} && stty intr ^c' uartlog"""
         screen_wrapped = f"""screen -S {screen_name} -d -m bash -c "{base_command}"; sleep 1"""
 
