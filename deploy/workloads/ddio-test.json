@@ -1,0 +1,38 @@
+{
+	"benchmark_name": "ddio-test",
+	"common_simulation_outputs": [
+		"uartlog"
+	],
+	"workloads": [
+		{
+			"name": "1",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-recv.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		},
+		{
+			"name": "3",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-recv.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		},
+		{
+			"name": "5",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-recv.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		},
+		{
+			"name": "0",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-gen.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		},
+		{
+			"name": "4",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-gen.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		},
+		{
+			"name": "2",
+			"bootbinary": "../../../target-design/chipyard/generators/icenet/software/ddio-test/traffic-gen.riscv",
+			"rootfs": "../../../target-design/chipyard/software/firemarshal/boards/default/installers/firesim/dummy.rootfs"
+		}
+	]
+}

@@ -1,0 +1,607 @@
+# Build-time build recipe configuration for the FireSim Simulation Manager
+# See https://docs.fires.im/en/stable/Advanced-Usage/Manager/Manager-Configuration-Files.html for documentation of all of these params.
+
+# this file contains sections that describe hardware designs that /can/ be built.
+# edit config_build.yaml to actually "turn on" a config to be built when you run
+# buildbitstream
+
+###########
+# Schema:
+###########
+# <NAME>:
+#    DESIGN: <>
+#    TARGET_CONFIG: <>
+#    PLATFORM_CONFIG: Config
+#    deploy_quintuplet: null
+#    # NOTE: these platform_config_args are for F1 only
+#    # they should be set to null if using another platform
+#    platform_config_args:
+#       fpga_frequency: null
+#       build_strategy: null
+#    post_build_hook: null
+#    metasim_customruntimeconfig: "path to custom runtime config for metasims"
+#    bit_builder_recipe:
+#    # OPTIONAL: overrides for bit builder recipe
+#    # Arg structure should be identical to the args given
+#    # in the base_recipe.
+#    #bit_builder_arg_overrides:
+#    #  <ARG>: <OVERRIDE>
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Split
+#################################################################################
+xilinx_u250_firesim_rocket_split_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Remove_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_rocket_split_tile:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Extract_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Split Ring
+#################################################################################
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Extract_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Extract_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_2:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Remove_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Hyperscale tapeout
+#################################################################################
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Remove_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_zstdcomp:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_zstddecomp:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Hyperscale tapeout No NIC
+#################################################################################
+xilinx_u250_firesim_hyperscale_client_base:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: FireSimHyperscaleTapeoutClientConfig 
+  PLATFORM_CONFIG: Remove_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_client_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: FireSimHyperscaleTapeoutClientConfig 
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_client_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: FireSimHyperscaleTapeoutClientConfig 
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+######################################################################
+# Xilinx Alveo u250, 8 core on noc
+######################################################################
+xilinx_u250_eight_rocket_mesh_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Extract_OctaTileMeshNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_eight_rocket_mesh_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Extract_OctaTileMeshNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_eight_rocket_mesh_2:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Remove_OctaTileMeshNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Preserve Target
+#################################################################################
+xilinx_u250_firesim_rocket_soc_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_rocket_tile_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Sha3 Preserve Target
+#################################################################################
+xilinx_u250_firesim_sha3_rocket_soc_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_sha3_rocket_accel_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Gemmini Preserve Target
+#################################################################################
+xilinx_u250_firesim_gemmini_rocket_soc_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_gemmini_rocket_accel_preserve:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Boom Preserve Target
+#################################################################################
+xilinx_u250_firesim_small_boom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.SmallBoomConfig
+  PLATFORM_CONFIG: Preserve_Remove_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_small_boom_backend:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.SmallBoomConfig
+  PLATFORM_CONFIG: Preserve_Extract_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_large_boom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.LargeBoomConfig
+  PLATFORM_CONFIG: Preserve_Remove_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 70
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_large_boom_backend:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.LargeBoomConfig
+  PLATFORM_CONFIG: Preserve_Extract_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_giga_boom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GigaBoomConfig
+  PLATFORM_CONFIG: Preserve_Remove_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_giga_boom_backend:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GigaBoomConfig
+  PLATFORM_CONFIG: Preserve_Extract_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager TIP experiments
+#################################################################################
+xilinx_u250_firesim_large_boom:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.LargeBoomConfig
+  PLATFORM_CONFIG: BaseXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 1-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 40
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_tera_boom:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.TeraBoomConfig
+  PLATFORM_CONFIG: BaseXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 1-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 40
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager GoldenCove Configs
+#################################################################################
+xilinx_u250_firesim_50_golden_cove_boom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GoldenCove50BoomConfig
+  PLATFORM_CONFIG: Preserve_Remove_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_50_golden_cove_boom_backend:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GoldenCove50BoomConfig
+  PLATFORM_CONFIG: Preserve_Extract_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 7
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_40_golden_cove_boom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GoldenCove40BoomConfig
+  PLATFORM_CONFIG: Preserve_Remove_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 70
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_40_golden_cove_boom_backend:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.GoldenCove40BoomConfig
+  PLATFORM_CONFIG: Preserve_Extract_BoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_megaboom_config:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.MegaBoomConfig
+  PLATFORM_CONFIG: BaseXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 1-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#########################################################################
+# Octaboom with ddio
+#########################################################################
+xilinx_u250_firesim_ddio_nic_octaboom_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.DDIOOctaLargeBoomConfig
+  PLATFORM_CONFIG: Remove_OctaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_ddio_nic_octaboom_tiles_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.DDIOOctaLargeBoomConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_OctaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_ddio_nic_octaboom_tiles_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.DDIOOctaLargeBoomConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_OctaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml

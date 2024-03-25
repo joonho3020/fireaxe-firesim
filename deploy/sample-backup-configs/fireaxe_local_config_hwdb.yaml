@@ -1,0 +1,15 @@
+# Hardware config database for FireSim Simulation Manager
+# See https://docs.fires.im/en/stable/Advanced-Usage/Manager/Manager-Configuration-Files.html for documentation of all of these params.
+
+# Hardware configs represent a combination of an agfi, a deployquintuplet override
+# (if needed), and a custom runtime config (if needed)
+
+# The AGFIs provided below are public and available to all users.
+# Only AGFIs for the latest release of FireSim are guaranteed to be available.
+# If you are using an older version of FireSim, you will need to generate your
+# own images.
+
+alveo_u250_firesim_rocket_singlecore_no_nic:
+    bitstream_tar: https://raw.githubusercontent.com/firesim/firesim-public-bitstreams/1dc6be48bfe043bbc47e24660c1ef5076a22b7e4/xilinx_alveo_u250/alveo_u250_firesim_rocket_singlecore_no_nic.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null

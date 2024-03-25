@@ -1,0 +1,4 @@
+This workload was generated using FireMarshal. See the following config
+and workload directory for details:
+../../../target-design/chipyard/generators/icenet/software/ddio-test.yaml
+../../../target-design/chipyard/generators/icenet/software/ddio-test

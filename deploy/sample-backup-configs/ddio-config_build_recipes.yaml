@@ -1,0 +1,95 @@
+##############################################################################
+# 12 core boom config with 128kB L2
+##############################################################################
+xilinx_u250_firesim_nic_dodeca_boom_128kB_l2_256b_sbus_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2SbusRingNoCConfig
+  PLATFORM_CONFIG: Remove_DoDecaSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_nic_dodeca_boom_128kB_l2_256b_sbus_tiles_0_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2SbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_DoDecaSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_nic_dodeca_boom_128kB_l2_256b_sbus_tiles_1_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2SbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_DoDecaSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+##############################################################################
+# 12 core boom config with 128kB L2
+##############################################################################
+xilinx_u250_firesim_nic_fame5_dodeca_boom_128kB_l2_256b_sbus_xbar_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2Config
+  PLATFORM_CONFIG: Remove_DoDecaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_nic_fame5_dodeca_boom_128kB_l2_256b_sbus_xbar_tiles_0_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2Config
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_DoDecaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_nic_fame5_dodeca_boom_128kB_l2_256b_sbus_xbar_tiles_1_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithNoTraceFireSimTweaksAndBridges_chipyard.DDIODoDecaBoom128kBL2Config
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_DoDecaBoomQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml

@@ -1,0 +1,15 @@
+name: buildsetup
+description: "Run firesim's build-setup.sh. Used only for GH-hosted CI containers."
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        ssh-add -L
+        source /etc/profile.d/conda.sh
+        ./build-setup.sh --skip-validate
+        # All actions that run in a GH-hosted container source env.sh before
+        # running their jobs. This ensures conda is in the runner's path, which
+        # is not the case by default.
+        sed -i "1s;^;export PATH=$PATH:/opt/conda/condabin\n;" env.sh
+      shell: bash
