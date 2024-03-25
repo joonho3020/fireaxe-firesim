@@ -82,6 +82,54 @@ qsfp_fame5_fastmode_six_large_boom_soc_30MHz:
 
 
 ###################################################################################################################################################
+# fastmode 70MHz
+###################################################################################################################################################
+qsfp_fastmode_one_big_rocket_soc_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_one_big_rocket_soc_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fastmode_one_big_rocket_tile_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_one_big_rocket_tile_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fastmode_two_big_rocket_soc_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_two_big_rocket_soc_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fastmode_two_big_rocket_tile_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_two_big_rocket_tile_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fastmode_four_big_rocket_soc_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_four_big_rocket_soc_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fastmode_four_big_rocket_tile_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_four_big_rocket_tile_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fastmode_eight_big_rocket_soc_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_eight_big_rocket_soc_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fastmode_eight_big_rocket_tile_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_eight_big_rocket_tile_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fastmode_sixteen_big_rocket_soc_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_sixteen_big_rocket_soc_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fastmode_sixteen_big_rocket_tile_70MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fastmode_sixteen_big_rocket_tile_70MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+###################################################################################################################################################
 # fastmode 50MHz
 ###################################################################################################################################################
 qsfp_fastmode_one_big_rocket_soc_50MHz:
