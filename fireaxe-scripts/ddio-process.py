@@ -19,13 +19,9 @@ with open(os.path.join(args.sim_dir, 'sim_slot_0/uartlog'), 'r') as uartlog:
     wr_bins = []
     for line in lines:
         words = line.split()
-        if len(words) == 2 and 'hist_rd' in words[0]:
+        if len(words) == 4 and 'rd' in words[0] and 'wr' in words[2]:
             rd_bins.append(int(words[1]))
-        elif len(words) == 2 and 'hist_wr' in words[0]:
-            wr_bins.append(int(words[1]))
+            wr_bins.append(int(words[3]))
 
-    row_idx = f'Rd-{args.row_idx}'
-    print(row_idx, *rd_bins, sep=',')
-
-    row_idx = f'Wr-{args.row_idx}'
-    print(row_idx, *wr_bins, sep=',')
+    print(f'Rd-{args.row_idx},{sum(rd_bins)/len(rd_bins)}')
+    print(f'Wr-{args.row_idx},{sum(wr_bins)/len(wr_bins)}')
