@@ -33,6 +33,8 @@ function download_go() {
 }
 
 function build_and_install_workload() {
+    cd $FIRESIM_BASEDIR/sw/firesim-software
+    ./init-submodules.sh
     cd $FIREAXE_SCRIPT_DIR/go-gc-benchmark
     marshal build go-gc.json
     marshal install go-gc.json
@@ -70,8 +72,8 @@ function generate_plot() {
 }
 
 function run_all() {
-    copy_firesim_db
-    download_go
+# copy_firesim_db
+# download_go
     build_and_install_workload
     firesim_infrasetup_runworkload
     copy_results
