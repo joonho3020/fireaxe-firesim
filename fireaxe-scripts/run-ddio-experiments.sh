@@ -13,6 +13,12 @@ CYDIR=$FIRESIM_BASEDIR/target-design/chipyard
 ICENIC_DIR=$CYDIR/generators/icenet
 ICENIC_SW=$ICENIC_DIR/software
 
+function copy_firesim_db() {
+    echo "copy_firesim_db"
+    cd $FIREAXE_SCRIPT_DIR
+    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-4fpga-ae.json /opt/firesim-db.json
+}
+
 function checkout_firesim_ddio() {
     cd $FIRESIM_BASEDIR
     git checkout ae-ddio
@@ -117,12 +123,22 @@ function run_noc_config() {
   done
 }
 
-checkout_firesim_ddio
-cd /opt
-sudo cp firesim-db-one-cherry-one-mono.json firesim-db.json
-cd -
-run_xbar_config
-checkout_firesim_ae_main
+function generate_plot() {
+    echo "Generating DDIO experiment plot"
+    cd $FIREAXE_SCRIPT_DIR
+    ./plot-ddio.py --input-dir=ddio-results
+}
+
+function run_all() {
+  copy_firesim_db
+  checkout_firesim_ddio
+  run_xbar_config
+  checkout_firesim_ae_main
+  generate_plot
+}
+
+time run_all | tee run-ddio.log
+
 
 # Need to change the inter-FPGA connection
 # cd /opt

@@ -10,6 +10,12 @@ TIP_OUTPUTDIR=$FIREAXE_SCRIPT_DIR/intermediate/tip-outputs
 
 EMBENCH_DIR=$FIRESIM_BASEDIR/target-design/chipyard/software/embench
 
+function copy_firesim_db() {
+    echo "copy_firesim_db"
+    cd $FIREAXE_SCRIPT_DIR
+    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+}
+
 function checkout_firesim_gc40() {
     cd $FIRESIM_BASEDIR
     git checkout ae-core-split
@@ -168,14 +174,19 @@ function run_x86_xeon() {
     ./tip-x86-test.py --repeat 100 --binary-dir $EMBENCH_DIR/build-x86 > $INTERMEDIATE_DIR/TIP-IPC-XEON.csv
 }
 
-checkout_firesim_gc40
-build_embench
-run_golden_cove_40
-# run_large_boom
-# run_mega_boom
-checkout_firesim_ae_main
+function generate_plot() {
+    echo "Generating GC40 BOOM split IPC and CPI plot"
+    cd $FIREAXE_SCRIPT_DIR
+    ./plot-tip-core-split.py --input-dir=tip-results
+}
 
+function run_all() {
+    copy_firesim_db
+    checkout_firesim_gc40
+    build_embench
+    run_golden_cove_40
+    checkout_firesim_ae_main
+    generate_plot
+}
 
-
-# build_embench_x86
-# run_x86_xeon
+time run_all | tee run-tip-experiments.log

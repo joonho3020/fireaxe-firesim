@@ -9,6 +9,12 @@ FIRESIM_SIMULATION_DIR=$FIRESIM_BASEDIR/deploy/sim-dir
 INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/fame5-sweep-intermediate
 RESULT_DIR=$FIREAXE_SCRIPT_DIR/perf-results
 
+function copy_firesim_db() {
+    echo "copy_firesim_db"
+    cd $FIREAXE_SCRIPT_DIR
+    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+}
+
 function build_and_install_workload() {
     cd $FIREAXE_SCRIPT_DIR/perf-sweep-workload
     make clean && make
@@ -69,6 +75,18 @@ function run_for_frequency() {
     process_sweep_results $SIM_DIR_PFX $SIM_FREQS
 }
 
-build_and_install_workload
-run_for_frequency 30 15
-run_for_frequency 20 15
+function generate_plot() {
+    echo "Generating FAME5 perf sweep plot"
+    cd $FIREAXE_SCRIPT_DIR
+    ./plot-fame5-perf.py --input-dir=perf-results
+}
+
+function run_all() {
+    copy_firesim_db
+    build_and_install_workload
+    run_for_frequency 30 15
+    run_for_frequency 20 15
+    generate_plot
+}
+
+time run_all | tee run-fame5-perf-sweep.log

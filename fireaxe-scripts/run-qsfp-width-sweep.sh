@@ -9,6 +9,12 @@ FIRESIM_SIMULATION_DIR=$FIRESIM_BASEDIR/deploy/sim-dir
 INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/qsfp-sweep-intermediate
 RESULT_DIR=$FIREAXE_SCRIPT_DIR/perf-results
 
+function copy_firesim_db() {
+    echo "copy_firesim_db"
+    cd $FIREAXE_SCRIPT_DIR
+    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+}
+
 function build_and_install_workload() {
     cd $FIREAXE_SCRIPT_DIR/perf-sweep-workload
     make clean && make
@@ -80,11 +86,23 @@ function run_for_frequency() {
     process_sweep_results $SIM_DIR_PFX $BITSTREAM_FREQ $FAST_OR_EXACT
 }
 
-build_and_install_workload
+function generate_plot() {
+    echo "Generating QSFP perf sweep plot"
+    cd $FIREAXE_SCRIPT_DIR
+    ./plot-qsfp-width-sweep.py --input-dir=perf-results
+}
 
-run_for_frequency 10 "fastmode"
-run_for_frequency 50 "fastmode"
-run_for_frequency 70 "fastmode"
+function run_all() {
+    copy_firesim_db
+    build_and_install_workload
 
-run_for_frequency 10 "exactmode"
-run_for_frequency 50 "exactmode"
+    run_for_frequency 10 "fastmode"
+    run_for_frequency 50 "fastmode"
+    run_for_frequency 70 "fastmode"
+
+    run_for_frequency 10 "exactmode"
+    run_for_frequency 50 "exactmode"
+    generate_plot
+}
+
+time run_all | tee run-qsfp-width-sweep.log

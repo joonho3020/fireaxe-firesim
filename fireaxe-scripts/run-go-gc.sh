@@ -8,6 +8,12 @@ FIRESIM_SIMULATION_DIR=$FIRESIM_BASEDIR/deploy/sim-dir
 INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/go-gc-intermediate
 RESULT_DIR=$FIREAXE_SCRIPT_DIR/go-gc-results
 
+function copy_firesim_db() {
+    echo "copy_firesim_db"
+    cd $FIREAXE_SCRIPT_DIR
+    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+}
+
 function download_go() {
     cd $FIREAXE_SCRIPT_DIR
     echo "downloading go"
@@ -57,7 +63,18 @@ function copy_results() {
     cp $RESULT_DIR/go-gc0/GO_GC_RESULTS.out go-gc-results
 }
 
-download_go
-build_and_install_workload
-firesim_infrasetup_runworkload
-copy_results
+function generate_plot() {
+    echo "Generating GO GC experiment plot"
+    cd $FIREAXE_SCRIPT_DIR
+    ./plot-go-gc.py --input-dir=go-gc-results
+}
+
+function run_all() {
+    copy_firesim_db
+    download_go
+    build_and_install_workload
+    firesim_infrasetup_runworkload
+    copy_results
+}
+
+time run_all | tee run-go-gc.log
