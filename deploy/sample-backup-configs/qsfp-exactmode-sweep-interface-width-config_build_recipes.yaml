@@ -1,0 +1,346 @@
+
+
+###########################################################################################################
+# QSFP Exact 50 MHz
+###########################################################################################################
+
+#################################################################################
+# QSFP / Exact partition mode / One big rocket / 50 MHz
+#################################################################################
+qsfp_exactmode_one_big_rocket_soc_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.OneBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_OneRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_one_big_rocket_tile_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.OneBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_OneRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Two big rocket / 50 MHz
+#################################################################################
+qsfp_exactmode_two_big_rocket_soc_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.TwoBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_TwoRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_two_big_rocket_tile_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.TwoBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_TwoRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Four big rocket / 50 MHz
+#################################################################################
+qsfp_exactmode_four_big_rocket_soc_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.FourBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_FourRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_four_big_rocket_tile_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.FourBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_FourRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Eight big rocket / 50 MHz
+#################################################################################
+qsfp_exactmode_eight_big_rocket_soc_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.EightBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_EightRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_eight_big_rocket_tile_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.EightBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_EightRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Sixteen big rocket / 50 MHz
+#################################################################################
+qsfp_exactmode_sixteen_big_rocket_soc_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.SixteenBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_SixteenRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_sixteen_big_rocket_tile_50MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.SixteenBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_SixteenRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+
+
+
+
+
+
+###########################################################################################################
+# QSFP Exact 10 MHz
+###########################################################################################################
+
+#################################################################################
+# QSFP / Exact partition mode / One big rocket / 10 MHz
+#################################################################################
+qsfp_exactmode_one_big_rocket_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.OneBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_OneRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_one_big_rocket_tile_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.OneBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_OneRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Two big rocket / 10 MHz
+#################################################################################
+qsfp_exactmode_two_big_rocket_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.TwoBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_TwoRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_two_big_rocket_tile_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.TwoBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_TwoRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Four big rocket / 10 MHz
+#################################################################################
+qsfp_exactmode_four_big_rocket_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.FourBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_FourRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_four_big_rocket_tile_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.FourBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_FourRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Eight big rocket / 10 MHz
+#################################################################################
+qsfp_exactmode_eight_big_rocket_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.EightBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_EightRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_eight_big_rocket_tile_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.EightBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_EightRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# QSFP / Exact partition mode / Sixteen big rocket / 10 MHz
+#################################################################################
+qsfp_exactmode_sixteen_big_rocket_soc_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.SixteenBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_SixteenRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_sixteen_big_rocket_tile_10MHz:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.SixteenBigRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_SixteenRocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml

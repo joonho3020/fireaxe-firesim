@@ -1,0 +1,5 @@
+{
+  "name": "run-cycles",
+  "base": "bare-base.json",
+  "bin": "run-cycles.riscv"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "Xilinx/2133072BM057A",
+    "device": "xcu250_0_3",
+    "bdf": "1e:00.0"
+  },
+  {
+    "uid": "Xilinx/2133072BM053A",
+    "device": "xcu250_0_2",
+    "bdf": "1d:00.0"
+  },
+  {
+    "uid": "Xilinx/21330497N029A",
+    "device": "xcu250_0_4",
+    "bdf": "3d:00.0"
+  },
+  {
+    "uid": "Xilinx/21330497N01TA",
+    "device": "xcu250_0_1",
+    "bdf": "3f:00.0"
+  },
+  {
+    "uid": "Xilinx/2133072BM059A",
+    "device": "xcu250_0",
+    "bdf": "41:00.0"
+  },
+  {
+    "uid": "Xilinx/21320733400XA",
+    "device": "xcu250_0_5",
+    "bdf": "1c:00.0"
+  }
+]

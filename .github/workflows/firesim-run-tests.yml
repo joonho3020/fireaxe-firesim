@@ -1,0 +1,127 @@
+name: firesim-ci-process
+
+on:
+  # run ci when pring to main (note: ci runs on the merge commit of the pr!)
+  pull_request:
+    branches:
+      - main
+      - stable
+      - multi-fpga-main
+
+defaults:
+  run:
+    shell: bash -leo pipefail {0}
+
+env:
+  PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_A_PERSONAL_ACCESS_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_DEFAULT_REGION: ${{ secrets.AZURE_DEFAULT_REGION }}
+  AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+  AZURE_CI_SUBNET_ID : ${{ secrets.AZURE_CI_SUBNET_ID }}
+  AZURE_CI_NSG_ID : ${{ secrets.AZURE_CI_NSG_ID }}
+  FIRESIM_PEM: ${{ secrets.FIRESIM_PEM }}
+  FIRESIM_PEM_PUBLIC: ${{ secrets.FIRESIM_PEM_PUBLIC }}
+  MANAGER_FIRESIM_LOCATION: "~/firesim"
+  LANG: "en_US.UTF-8" # required by SBT when it sees boost directories
+  LANGUAGE: "en_US:en"
+  LC_ALL: "en_US.UTF-8"
+  CI_LABEL_DEBUG: ${{ contains(github.event.pull_request.labels.*.name, 'ci:debug') }}
+  CI_LABEL_PERSIST: ${{ contains(github.event.pull_request.labels.*.name, 'ci:persist-prior-workflows') }}
+  REMOTE_WORK_DIR: /scratch/buildbot/fs-shared/fs-${{ github.sha }}
+  TERM: xterm-256-color
+
+jobs:
+  cancel-prior-workflows:
+    name: cancel-prior-workflows
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Cancel previous workflow runs
+        if: ${{ (env.CI_LABEL_PERSIST != 'true') }}
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+  ### Local FPGAs CI ###
+
+  setup-local-fpga-repo:
+    name: setup-local-fpga-repo
+    runs-on: local-fpga
+    steps:
+      # This forces a fresh clone of the repo during the `checkout` step
+      # to resolve stale submodule URLs. See https://github.com/ucb-bar/chipyard/pull/1156.
+      - name: Delete old checkout
+        run: |
+            ssh-add -L
+            ls -alh .
+            rm -rf ${{ github.workspace }}/* || true
+            rm -rf ${{ github.workspace }}/.* || true
+            ls -alh .
+      - uses: actions/checkout@v3
+      - name: Setup repo copy
+        run: |
+          mkdir -p $(dirname ${{ env.REMOTE_WORK_DIR }})
+          git clone ${{ github.workspace }} ${{ env.REMOTE_WORK_DIR }}
+      - name: Setup repo
+        run: |
+          cd ${{ env.REMOTE_WORK_DIR }}
+          ./build-setup.sh --skip-validate
+          source sourceme-manager.sh --skip-ssh-setup
+          firesim managerinit --platform xilinx_alveo_u250
+          cd sw/firesim-software && ./init-submodules.sh
+
+  run-local-fpga-buildbitstream:
+    if: contains(github.event.pull_request.labels.*.name, 'ci:local-fpga-buildbitstream-deploy')
+    needs: [setup-local-fpga-repo]
+    name: run-local-fpga-buildbitstream
+    runs-on: local-fpga
+    timeout-minutes: 1200
+    steps:
+      # This forces a fresh clone of the repo during the `checkout` step
+      # to resolve stale submodule URLs. See https://github.com/ucb-bar/chipyard/pull/1156.
+      - name: Delete old checkout
+        run: |
+          rm -rf ${{ github.workspace }}/* || true
+          rm -rf ${{ github.workspace }}/.* || true
+      - uses: actions/checkout@v3
+      - name: Run buildbitstream command and update sample local bitstreams
+        run: .github/scripts/run-local-buildbitstreams.py
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          base: ${{ github.head_ref }}
+          add-paths: "deploy/sample-backup-configs/sample_config_hwdb.yaml"
+          commit-message: "Update local bitstream(s) [ci skip]"
+          body: "Update local bitstream(s) for PR #${{ github.event.pull_request.number }}"
+          branch-suffix: random
+          title: "Update local bitstream(s) for PR #${{ github.event.pull_request.number }} (`${{ github.head_ref }}`)"
+
+  run-fireaxe-verilator-metasims:
+    name: run-fireaxe-verilator-metasims
+    needs: [setup-local-fpga-repo]
+    runs-on: local-fpga
+    steps:
+      # This forces a fresh clone of the repo during the `checkout` step
+      # to resolve stale submodule URLs. See https://github.com/ucb-bar/chipyard/pull/1156.
+      - name: Delete old checkout
+        run: |
+          rm -rf ${{ github.workspace }}/* || true
+          rm -rf ${{ github.workspace }}/.* || true
+      - uses: actions/checkout@v3
+      - name: Run fireaxe Verilator metasims
+        run: .github/scripts/fireaxe-run-verilator-metasims.py
+
+  cleanup-local-fpga-repo:
+    name: cleanup-local-fpga-repo
+    needs: [run-local-fpga-buildbitstream, run-fireaxe-verilator-metasims]
+    # uses a separate runner to cleanup (irrespective, of other jobs cancelled, running, etc)
+    runs-on: local-fpga-cleanup
+    if: ${{ always() }}
+    steps:
+      - name: Delete repo copy
+        run: rm -rf ${{ env.REMOTE_WORK_DIR }}

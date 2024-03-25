@@ -1,0 +1,35 @@
+GO Garbage Collection Results
+Pin threads to GOMAXPROCS cores, GOGC=100
+GOMAXPROCS 1
+  50.0% 7µs
+  95.0% 20.306ms
+  99.0% 131.079ms
+GOMAXPROCS 2
+  50.0% 0s
+  95.0% 15.643ms
+  99.0% 29.942ms
+GOMAXPROCS 3
+  50.0% 0s
+  95.0% 3.436ms
+  99.0% 16.972ms
+GOMAXPROCS 4
+  50.0% 0s
+  95.0% 463µs
+  99.0% 788µs
+Pin threads to GOMAXPROCS cores, GOGC=10
+GOMAXPROCS 1
+  50.0% 7µs
+  95.0% 20.167ms
+  99.0% 181.704ms
+GOMAXPROCS 2
+  50.0% 18µs
+  95.0% 20.126ms
+  99.0% 55.893ms
+GOMAXPROCS 3
+  50.0% 2µs
+  95.0% 13.455ms
+  99.0% 20.155ms
+GOMAXPROCS 4
+  50.0% 1µs
+  95.0% 417µs
+  99.0% 20.094ms

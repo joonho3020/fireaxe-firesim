@@ -1,0 +1,170 @@
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Sha3 Preserve Target
+#################################################################################
+qsfp_exactmode_sha3_rocket_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_sha3_rocket_accel:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Sha3 Break Target
+#################################################################################
+qsfp_fastmode_sha3_rocket_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Remove_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_fastmode_sha3_rocket_accel:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: Extract_Sha3QSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Gemmini Preserve Target
+#################################################################################
+qsfp_exactmode_gemmini_rocket_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Preserve_Remove_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_exactmode_gemmini_rocket_accel:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Preserve_Extract_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Gemmini Break Target
+#################################################################################
+qsfp_fastmode_gemmini_rocket_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Remove_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+qsfp_fastmode_gemmini_rocket_accel:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: Extract_GemminiQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+#################################################################################
+# Monolithic configs
+#################################################################################
+xilinx_u250_sha3_rocket_mono:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.Sha3RocketConfig
+  PLATFORM_CONFIG: BaseXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 1-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_gemmini_rocket_mono:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimTweaksAndBridges_chipyard.GemminiRocketConfig
+  PLATFORM_CONFIG: BaseXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 1-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+

@@ -1,0 +1,6 @@
+Name,wallclock(s),hostfreq(MHz),targetcycles(#),sim-freq(kHz),FMR
+qsfp-fastmode-50-sixteen,335.2,50.0,300280706,895.82,55.81
+qsfp-fastmode-50-one,218.0,50.0,300274562,1378.0,36.3
+qsfp-fastmode-50-two,219.4,50.0,300279170,1369.0,36.53
+qsfp-fastmode-50-eight,269.6,50.0,300279170,1114.0,44.89
+qsfp-fastmode-50-four,242.0,50.0,300279170,1241.0,40.29

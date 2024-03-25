@@ -1,0 +1,77 @@
+###################################################################################################################################################
+# FAME5 perf sweeps
+###################################################################################################################################################
+qsfp_fame5_fastmode_one_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_one_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_two_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_two_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_three_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_three_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_four_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_four_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_five_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_five_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_six_large_boom_tile_15MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_six_large_boom_tile_15MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fame5_fastmode_one_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_one_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_two_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_two_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_three_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_three_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_four_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_four_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_five_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_five_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_six_large_boom_soc_20MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_six_large_boom_soc_20MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+qsfp_fame5_fastmode_one_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_one_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_two_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_two_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_three_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_three_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_four_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_four_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_five_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_five_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+qsfp_fame5_fastmode_six_large_boom_soc_30MHz:
+    bitstream_tar: file:///scratch/fpga-user/isca-ae/firesim-private-bitstreams/xilinx_alveo_u250/qsfp_fame5_fastmode_six_large_boom_soc_30MHz.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null

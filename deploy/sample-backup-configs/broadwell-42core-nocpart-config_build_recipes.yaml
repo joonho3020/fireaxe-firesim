@@ -1,0 +1,123 @@
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Split Ring
+#################################################################################
+xilinx_u250_broadwell_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: Remove_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-7
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_2:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_3:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-3
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_4:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-4
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_5:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-5
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_broadwell_6:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.BroadwellSbusRingNoCConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_BroadwellSbusRingQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 8-6
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 10
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
