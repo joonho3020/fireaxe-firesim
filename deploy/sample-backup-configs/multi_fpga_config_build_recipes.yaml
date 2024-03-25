@@ -1,0 +1,406 @@
+# Build-time build recipe configuration for the FireSim Simulation Manager
+# See https://docs.fires.im/en/stable/Advanced-Usage/Manager/Manager-Configuration-Files.html for documentation of all of these params.
+
+# this file contains sections that describe hardware designs that /can/ be built.
+# edit config_build.yaml to actually "turn on" a config to be built when you run
+# buildbitstream
+
+###########
+# Schema:
+###########
+# <NAME>:
+#    DESIGN: <>
+#    TARGET_CONFIG: <>
+#    PLATFORM_CONFIG: Config
+#    deploy_quintuplet: null
+#    # NOTE: these platform_config_args are for F1 only
+#    # they should be set to null if using another platform
+#    platform_config_args:
+#       fpga_frequency: null
+#       build_strategy: null
+#    post_build_hook: null
+#    metasim_customruntimeconfig: "path to custom runtime config for metasims"
+#    bit_builder_recipe:
+#    # OPTIONAL: overrides for bit builder recipe
+#    # Arg structure should be identical to the args given
+#    # in the base_recipe.
+#    #bit_builder_arg_overrides:
+#    #  <ARG>: <OVERRIDE>
+
+################################################################################################
+# 2-way split designs (i.e., pull a single module out from my SoC)
+################################################################################################
+firesim_rocket_split_soc:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Remove_RocketTileF1Config
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_rocket_split_tile:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Extract_RocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+###############################################################################################
+# 3-way split
+###############################################################################################
+firesim_dual_rocket_split_soc:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.DualCoreRocketConfig
+  PLATFORM_CONFIG: Remove_DualRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_dual_rocket_split_tile_0:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.DualCoreRocketConfig
+  PLATFORM_CONFIG: Extract_DualRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_dual_rocket_split_tile_1:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.DualCoreRocketConfig
+  PLATFORM_CONFIG: Extract_DualRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+
+###############################################################################################
+# 2-way split + grouping
+# - pulls out all the instances of the specified modules by grouping them onto separate FPGAs
+# - one FPGA is always designated for the original SoC
+###############################################################################################
+firesim_quad_rocket_split_soc:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadCoreRocketConfig
+  PLATFORM_CONFIG: Remove_QuadRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_quad_rocket_split_tiles:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadCoreRocketConfig
+  PLATFORM_CONFIG: Extract_QuadRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+###############################################################################################
+# 3-way split / grouping
+###############################################################################################
+firesim_quad_rocket_3fpga_split_soc:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadCoreRocketConfig
+  PLATFORM_CONFIG: Remove_QuadRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_quad_rocket_3fpga_split_tiles_0:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadCoreRocketConfig
+  PLATFORM_CONFIG: Extract_QuadRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_quad_rocket_3fpga_split_tiles_1:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadCoreRocketConfig
+  PLATFORM_CONFIG: Extract_QuadRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+################################################################################
+# Multithreading configs
+################################################################################
+firesim_dual_rocket_split_fame5_soc:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.DualCoreRocketConfig
+  PLATFORM_CONFIG: Remove_DualRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+firesim_dual_rocket_split_fame5_tile:
+  PLATFORM: f1
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.DualCoreRocketConfig
+  PLATFORM_CONFIG: MTModels_MCRams_Extract_DualRocketTilePCISF1Config
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/f1.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Split
+#################################################################################
+xilinx_u250_firesim_rocket_split_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Remove_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_rocket_split_tile:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.RocketConfig
+  PLATFORM_CONFIG: Extract_RocketTileQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 2-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 90
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager RocketTile Split Ring
+#################################################################################
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Extract_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Remove_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_quadrocket_sbus_ring_noc_split_2:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.QuadRocketSbusRingNoCConfig
+  PLATFORM_CONFIG: Remove_QuadTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: AREA
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+
+#################################################################################
+# For XilinxAlveoInstanceDeployManager Hyperscale tapeout
+#################################################################################
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_soc:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Remove_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_zstdcomp:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_firesim_hyperscale_rocket_accels_nic_split_zstddecomp:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimConfigTweaks_chipyard.HyperscaleRocketAccelsConfig
+  PLATFORM_CONFIG: Extract_HyperscaleAccelsQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 30
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+######################################################################
+# Xilinx Alveo u250, 8 core on noc
+######################################################################
+xilinx_u250_eight_rocket_mesh_0:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Remove_OctaTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-0
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_eight_rocket_mesh_1:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Extract_OctaTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-1
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+xilinx_u250_eight_rocket_mesh_2:
+  PLATFORM: xilinx_alveo_u250
+  TARGET_PROJECT: firesim
+  DESIGN: FireSim
+  TARGET_CONFIG: WithDefaultFireSimBridges_WithNoTraceFireSimConfigTweaks_chipyard.EightRocketSbusMeshNoCConfig
+  PLATFORM_CONFIG: Extract_OctaTileRingNoCTopoQSFPXilinxAlveoConfig
+  TARGET_SPLIT_CONFIG: 3-2
+  deploy_quintuplet: null
+  platform_config_args:
+    fpga_frequency: 50
+    build_strategy: TIMING
+  post_build_hook: null
+  metasim_customruntimeconfig: null
+  bit_builder_recipe: bit-builder-recipes/xilinx_alveo_u250.yaml
+
+

@@ -1,0 +1,28 @@
+[submodule "platforms/f1/aws-fpga"]
+	path = platforms/f1/aws-fpga
+	url = https://github.com/firesim/aws-fpga-firesim
+[submodule "target-design/chipyard"]
+	path = target-design/chipyard
+	url = ssh://git@github.com/joey0320/multi-fpga-chipyard
+  branch = multi-fpga-main
+[submodule "sw/network-benchmarks"]
+	path = sw/network-benchmarks
+	url = https://github.com/firesim/network-benchmarks.git
+[submodule "deploy/workloads/memcached-thread-imbalance/mutilate-loadgen-riscv-release"]
+	path = deploy/workloads/memcached-thread-imbalance/mutilate-loadgen-riscv-release
+	url = https://github.com/firesim/mutilate-loadgen-riscv-release
+[submodule "deploy/workloads/ccbench-cache-sweep/ccbench"]
+	path = deploy/workloads/ccbench-cache-sweep/ccbench
+	url = https://github.com/ucb-bar/ccbench
+[submodule "deploy/workloads/runscripts/gapbs-scripts/gapbs"]
+	path = deploy/workloads/runscripts/gapbs-scripts/gapbs
+	url = https://github.com/sbeamer/gapbs.git
+[submodule "utils/FlameGraph"]
+	path = utils/fireperf/FlameGraph
+	url = https://github.com/brendangregg/FlameGraph.git
+[submodule "platforms/xilinx_vcu118/garnet-firesim"]
+	path = platforms/xilinx_vcu118/garnet-firesim
+	url = https://github.com/firesim/garnet-firesim
+[submodule "platforms/rhsresearch_nitefury_ii/NiteFury-and-LiteFury-firesim"]
+	path = platforms/rhsresearch_nitefury_ii/NiteFury-and-LiteFury-firesim
+	url = https://github.com/firesim/NiteFury-and-LiteFury-firesim.git
