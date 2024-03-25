@@ -3,8 +3,7 @@
 	url = https://github.com/firesim/aws-fpga-firesim
 [submodule "target-design/chipyard"]
 	path = target-design/chipyard
-	url = ssh://git@github.com/joey0320/multi-fpga-chipyard
-  branch = multi-fpga-main
+	url = ssh://git@github.com/joonho3020/fireaxe-chipyard.git
 [submodule "sw/network-benchmarks"]
 	path = sw/network-benchmarks
 	url = https://github.com/firesim/network-benchmarks.git
