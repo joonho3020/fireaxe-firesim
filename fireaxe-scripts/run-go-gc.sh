@@ -72,8 +72,8 @@ function generate_plot() {
 }
 
 function run_all() {
-# copy_firesim_db
-# download_go
+    copy_firesim_db
+    download_go
     build_and_install_workload
     firesim_infrasetup_runworkload
     copy_results
