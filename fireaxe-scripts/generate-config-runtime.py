@@ -13,6 +13,7 @@ parser.add_argument("--partition-seed", type=int, default=1, required=True, help
 parser.add_argument("--workload-name", type=str, default="hello.json", required=True, help="Workload specification")
 parser.add_argument("--out-config-file", type=str, required=True, help="Name of the generated config_runtime.yaml")
 parser.add_argument("--default-hw-config", type=str, default="xilinx_u250_firesim_rocket", help="Default HW Config")
+parser.add_argument("--run-farm-hosts-to-use", type=str, default='two_fpgas_spec', help="run_farm_hosts_to_use")
 args = parser.parse_args()
 
 with open('../deploy/config_runtime.yaml', 'r') as f:
@@ -22,6 +23,7 @@ with open('../deploy/config_runtime.yaml', 'r') as f:
     TIP_WORKER = "oracle2" if args.tip_core_width > 4 else "oracle"
 
     cfg['run_farm']['recipe_arg_overrides']['default_simulation_dir'] = args.sim_dir
+    cfg['run_farm']['recipe_arg_overrides']['run_farm_hosts_to_use'] = [ { 'localhost' : args.run_farm_hosts_to_use } ]
     cfg['target_config']['topology'] = args.topology
     cfg['target_config']['default_hw_config'] = args.default_hw_config
     cfg['tip_tracing']['enable'] = args.tip_enable
