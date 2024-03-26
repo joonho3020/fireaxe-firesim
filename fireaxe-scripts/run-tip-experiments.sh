@@ -113,7 +113,7 @@ function  run_golden_cove_40() {
     FPGAS_PER_RUN=2
     OUTPUT_DIR=$INTERMEDIATE_DIR/$CONFIG_PFX
 
-# generate_directory $OUTPUT_DIR
+    generate_directory $OUTPUT_DIR
 
     firesim_runworkload \
         $SIMS_PER_RUN \
@@ -135,7 +135,7 @@ function run_large_boom() {
     FPGAS_PER_RUN=1
     OUTPUT_DIR=$INTERMEDIATE_DIR/$CONFIG_PFX
 
-# generate_directory $OUTPUT_DIR
+    generate_directory $OUTPUT_DIR
     firesim_runworkload \
         $SIMS_PER_RUN \
         $BENCHMARK_NAME \
