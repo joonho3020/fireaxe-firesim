@@ -1,7 +1,0 @@
-Name,wallclock(s),hostfreq(MHz),targetcycles(#),sim-freq(kHz),FMR
-fame5-sweep-threadcnt-20-15-five,770.6,20.0,300438914,389.877,51.3
-fame5-sweep-threadcnt-20-15-one,464.5,20.0,300438914,646.811,30.92
-fame5-sweep-threadcnt-20-15-three,620.8,20.0,300438914,483.965,41.32
-fame5-sweep-threadcnt-20-15-four,701.5,20.0,300438914,428.252,46.7
-fame5-sweep-threadcnt-20-15-six,836.9,20.0,300440450,358.978,55.71
-fame5-sweep-threadcnt-20-15-two,552.9,20.0,300438914,543.34,36.81

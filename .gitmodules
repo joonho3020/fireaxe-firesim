@@ -28,3 +28,6 @@
 [submodule "fireaxe-scripts/go-gc-benchmark"]
 	path = fireaxe-scripts/go-gc-benchmark
 	url = git@github.com:joonho3020/go-gc-benchmark.git
+[submodule "fireaxe-isca-ae-bitstreams"]
+	path = fireaxe-isca-ae-bitstreams
+	url = git@github.com:joonho3020/fireaxe-isca-ae-bitstreams.git
