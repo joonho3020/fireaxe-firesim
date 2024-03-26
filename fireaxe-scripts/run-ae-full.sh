@@ -13,13 +13,14 @@ echo "Running FAME-5 perf sweeps"
 
 echo "Running core split experiment"
 ./run-tip-experiments.sh
+./checkout-ae-main.sh
 
 echo "Running DDIO experiment"
 ./run-ddio-experiments.sh
+./checkout-ae-main.sh
 
 echo "Running go GC experiment"
-./ru-go-gc.sh
-
+./run-go-gc.sh
 
 echo "-------------------------"
 echo "run-ae-full.sh complete!!"
