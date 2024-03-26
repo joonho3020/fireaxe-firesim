@@ -31,3 +31,4 @@ fireaxe-scripts/generated-plots
 fireaxe-scripts/*.log
 deploy/sim-dir
 deploy/workloads
+deploy/*.tar.gz
