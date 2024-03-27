@@ -27,5 +27,6 @@ fireaxe-scripts/go-gc-results
 fireaxe-scripts/generated-plots
 fireaxe-scripts/perf-sweep-workload/run-cycles/
 fireaxe-scripts/ddio-intermediate/
+fireaxe-scripts/ddio-results/
 deploy/sim-dir
 deploy/workloads
