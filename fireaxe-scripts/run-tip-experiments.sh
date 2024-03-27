@@ -93,6 +93,7 @@ function firesim_runworkload() {
         firesim infrasetup  -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
         firesim runworkload -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
         firesim kill        -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
+        sleep 30s
     done
 }
 
