@@ -137,7 +137,7 @@ def parse_tip_pipeline_files() -> Tuple[List[str], CPIData]:
 
     cpi_data: CPIData = dict()
     pre_sorted_cpi : CPIData = dict()
-    bm_interest = ['sglib-combined', 'matmult-int', 'nettle-aes', 'huffbench', 'nbody']
+    bm_interest = ['st', 'matmult-int', 'nettle-aes', 'ud', 'nbody']
 
     for file in files:
         (filename, _) = os.path.splitext(file)
