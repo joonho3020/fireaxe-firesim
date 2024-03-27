@@ -68,7 +68,7 @@ function firesim_runworkload() {
         mv $OUT_CONFIG_FILE $INTERMEDIATE_DIR
         firesim infrasetup  -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
         firesim runworkload -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
-        firesim kill
+        firesim kill -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
     done
 }
 
