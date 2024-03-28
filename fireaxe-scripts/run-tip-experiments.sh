@@ -114,16 +114,16 @@ function  run_golden_cove_40() {
     FPGAS_PER_RUN=2
     OUTPUT_DIR=$INTERMEDIATE_DIR/$CONFIG_PFX
 
-# generate_directory $OUTPUT_DIR
+    generate_directory $OUTPUT_DIR
 
-# firesim_runworkload \
-# $SIMS_PER_RUN \
-# $BENCHMARK_NAME \
-# $FPGAS_PER_RUN \
-# fireaxe_xilinx_u250_golden_cove_40_config \
-# 6 216 \
-# xilinx_u250_firesim_rocket_split_soc \
-# $CONFIG_PFX
+    firesim_runworkload \
+        $SIMS_PER_RUN \
+        $BENCHMARK_NAME \
+        $FPGAS_PER_RUN \
+        fireaxe_xilinx_u250_golden_cove_40_config \
+        6 216 \
+        xilinx_u250_firesim_rocket_split_soc \
+        $CONFIG_PFX
     process_run_for_config $FPGAS_PER_RUN $FIRESIM_SIMULATION_DIR $CONFIG_PFX $BENCHMARK_NAME $OUTPUT_DIR $INTERMEDIATE_DIR
     ./tip-output-csv.py --tip-results-dir $CONFIG_PFX > $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv
 
@@ -188,7 +188,7 @@ function generate_plot() {
 function run_all() {
     copy_firesim_db
     checkout_firesim_gc40
-# build_embench
+    build_embench
     run_golden_cove_40
     checkout_firesim_ae_main
     generate_plot
