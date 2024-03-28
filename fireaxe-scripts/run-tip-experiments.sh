@@ -6,7 +6,7 @@ FIREAXE_SCRIPT_DIR=$(pwd)
 FIRESIM_BASEDIR=$FIREAXE_SCRIPT_DIR/../
 FIRESIM_SIMULATION_DIR=$FIRESIM_BASEDIR/deploy/sim-dir
 INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/tip-intermediate
-TIP_OUTPUTDIR=$FIREAXE_SCRIPT_DIR/intermediate/tip-outputs
+TIP_RESULT_DIR=$FIREAXE_SCRIPT_DIR/tip-results
 
 EMBENCH_DIR=$FIRESIM_BASEDIR/target-design/chipyard/software/embench
 
@@ -114,18 +114,21 @@ function  run_golden_cove_40() {
     FPGAS_PER_RUN=2
     OUTPUT_DIR=$INTERMEDIATE_DIR/$CONFIG_PFX
 
-    generate_directory $OUTPUT_DIR
+# generate_directory $OUTPUT_DIR
 
-    firesim_runworkload \
-        $SIMS_PER_RUN \
-        $BENCHMARK_NAME \
-        $FPGAS_PER_RUN \
-        fireaxe_xilinx_u250_golden_cove_40_config \
-        6 216 \
-        xilinx_u250_firesim_rocket_split_soc \
-        $CONFIG_PFX
+# firesim_runworkload \
+# $SIMS_PER_RUN \
+# $BENCHMARK_NAME \
+# $FPGAS_PER_RUN \
+# fireaxe_xilinx_u250_golden_cove_40_config \
+# 6 216 \
+# xilinx_u250_firesim_rocket_split_soc \
+# $CONFIG_PFX
     process_run_for_config $FPGAS_PER_RUN $FIRESIM_SIMULATION_DIR $CONFIG_PFX $BENCHMARK_NAME $OUTPUT_DIR $INTERMEDIATE_DIR
     ./tip-output-csv.py --tip-results-dir $CONFIG_PFX > $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv
+
+    mv $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv $TIP_RESULT_DIR/
+    mv $INTERMEDIATE_DIR/TIP-IPC-$CONFIG_PFX-$BENCHMARK_NAME.csv $TIP_RESULT_DIR/
 }
 
 
@@ -147,6 +150,7 @@ function run_large_boom() {
         $CONFIG_PFX
     process_run_for_config $FPGAS_PER_RUN $FIRESIM_SIMULATION_DIR $CONFIG_PFX $BENCHMARK_NAME $OUTPUT_DIR $INTERMEDIATE_DIR
     ./tip-output-csv.py --tip-results-dir $CONFIG_PFX > $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv
+    mv TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv $RESULT
 }
 
 function run_mega_boom() {
@@ -184,7 +188,7 @@ function generate_plot() {
 function run_all() {
     copy_firesim_db
     checkout_firesim_gc40
-    build_embench
+# build_embench
     run_golden_cove_40
     checkout_firesim_ae_main
     generate_plot
