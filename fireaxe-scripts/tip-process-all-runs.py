@@ -48,6 +48,7 @@ def get_binary_names(workload_spec):
 # Format
 # Cycles: <num cycles> Insts: <num insts>
 def collect_ipc(sim_dir):
+    print(sim_dir)
     with open(os.path.join(sim_dir, "uartlog"), "r") as f:
         lines = f.readlines()
         for line in lines:
@@ -56,7 +57,8 @@ def collect_ipc(sim_dir):
                 cycles = int(words[1])
                 insts  = int(words[3])
                 ipc = float(insts / cycles)
-                return ipc
+                print(cycles, insts, ipc)
+                return (ipc, cycles, insts)
         assert(False, "Could not find IPC from uartlog")
 
 def process_all_sim_slots(benchmark_name):
