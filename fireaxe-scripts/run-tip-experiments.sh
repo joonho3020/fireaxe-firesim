@@ -92,14 +92,14 @@ function  run_golden_cove_40() {
 
     generate_directory $OUTPUT_DIR
 
-    firesim_runworkload \
-        $SIMS_PER_RUN \
-        $BENCHMARK_NAME \
-        $FPGAS_PER_RUN \
-        fireaxe_xilinx_u250_golden_cove_40_config \
-        6 216 \
-        xilinx_u250_firesim_rocket_split_soc \
-        $CONFIG_PFX
+# firesim_runworkload \
+# $SIMS_PER_RUN \
+# $BENCHMARK_NAME \
+# $FPGAS_PER_RUN \
+# fireaxe_xilinx_u250_golden_cove_40_config \
+# 6 216 \
+# xilinx_u250_firesim_rocket_split_soc \
+# $CONFIG_PFX
     process_run_for_config $FPGAS_PER_RUN $FIRESIM_SIMULATION_DIR $CONFIG_PFX $BENCHMARK_NAME $OUTPUT_DIR $INTERMEDIATE_DIR
     ./tip-output-csv.py --tip-results-dir $CONFIG_PFX > $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv
     cp $INTERMEDIATE_DIR/TIP-OUTPUT-PIPELINE-$CONFIG_PFX-$BENCHMARK_NAME.csv $FIREAXE_SCRIPT_DIR/tip-results/
@@ -152,7 +152,7 @@ function run_x86_xeon() {
     ./tip-x86-test.py --binary-dir $EMBENCH_DIR/build-x86 > $INTERMEDIATE_DIR/TIP-IPC-XEON.csv
 }
 
-build_embench
+# build_embench
 run_golden_cove_40
 # run_large_boom
 # run_mega_boom
