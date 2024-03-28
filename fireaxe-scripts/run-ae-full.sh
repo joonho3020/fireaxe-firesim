@@ -38,21 +38,20 @@ if run_step "2"; then
 fi
 
 if run_step "3"; then
-    echo "Running core split experiment"
-    ./run-tip-experiments.sh
-    ./checkout-ae-main.sh
-fi
-
-
-if run_step "4"; then
     echo "Running DDIO experiment"
     ./run-ddio-experiments.sh
     ./checkout-ae-main.sh
 fi
 
-if run_step "5"; then
+if run_step "4"; then
     echo "Running go GC experiment"
     ./run-go-gc.sh
+fi
+
+if run_step "5"; then
+    echo "Running core split experiment"
+    ./run-tip-experiments.sh
+    ./checkout-ae-main.sh
 fi
 
 echo "-------------------------"
