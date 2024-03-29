@@ -6,7 +6,6 @@ FIREAXE_SCRIPT_DIR=$(pwd)
 FIRESIM_BASEDIR=$FIREAXE_SCRIPT_DIR/../
 FIRESIM_SIMULATION_DIR=$FIRESIM_BASEDIR/deploy/sim-dir
 INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/go-gc-intermediate
-RESULT_DIR=$FIREAXE_SCRIPT_DIR/go-gc-results
 
 function copy_firesim_db() {
     echo "copy_firesim_db"
@@ -54,14 +53,14 @@ function firesim_infrasetup_runworkload() {
     mv $OUT_CONFIG_FILE $INTERMEDIATE_DIR
     firesim infrasetup  -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
     firesim runworkload -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
-    firesim kill
-    rm deploy/*.tar.gz
+    firesim kill -c $INTERMEDIATE_DIR/$OUT_CONFIG_FILE
+    rm $FIRESIM_BASEDIR/deploy/*.tar.gz
 }
 
 function copy_results() {
     cd $FIREAXE_SCRIPT_DIR
     RESULT_DIR_NAME=$(ls ../deploy/results-workload/ | grep "go-gc")
-    RESULT_DIR=../deploy/results-workload/$RESULT_DIR_NAME
+    RESULT_DIR=$FIRESIM_BASEDIR/deploy/results-workload/$RESULT_DIR_NAME
     cp $RESULT_DIR/go-gc0/GO_GC_RESULTS.out go-gc-results
 }
 
@@ -77,6 +76,7 @@ function run_all() {
     build_and_install_workload
     firesim_infrasetup_runworkload
     copy_results
+    generate_plot
 }
 
 time run_all | tee run-go-gc.log
