@@ -104,7 +104,7 @@ function run_xbar_config() {
 function run_noc_config() {
   cd $FIREAXE_SCRIPT_DIR
 
-  CORES=(1 2 4 6 8 10 12)
+  CORES=(12)
   TOPOLOGY=fireaxe_128kB_dodeca_boom_ring_noc_config
   for RX_CORES in ${CORES[@]}; do
     firesim_infrasetup_runworkload $TOPOLOGY $RX_CORES 0
