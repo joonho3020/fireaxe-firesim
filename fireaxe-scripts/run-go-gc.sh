@@ -10,7 +10,7 @@ INTERMEDIATE_DIR=$FIREAXE_SCRIPT_DIR/go-gc-intermediate
 function copy_firesim_db() {
     echo "copy_firesim_db"
     cd $FIREAXE_SCRIPT_DIR
-    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+    sudo firesim-2fpga-config
 }
 
 function download_go() {
