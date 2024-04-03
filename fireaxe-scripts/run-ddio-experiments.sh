@@ -16,7 +16,7 @@ ICENIC_SW=$ICENIC_DIR/software
 function copy_firesim_db() {
     echo "copy_firesim_db"
     cd $FIREAXE_SCRIPT_DIR
-    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-4fpga-ae.json /opt/firesim-db.json
+    sudo firesim-4fpga-config
 }
 
 function checkout_firesim_ddio() {

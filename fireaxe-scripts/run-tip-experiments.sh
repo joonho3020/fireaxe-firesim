@@ -13,7 +13,7 @@ EMBENCH_DIR=$FIRESIM_BASEDIR/target-design/chipyard/software/embench
 function copy_firesim_db() {
     echo "copy_firesim_db"
     cd $FIREAXE_SCRIPT_DIR
-    sudo cp $FIREAXE_SCRIPT_DIR/firesim-db/firesim-db-2fpga-ae.json /opt/firesim-db.json
+    sudo firesim-2fpga-config
 }
 
 function checkout_firesim_gc40() {
